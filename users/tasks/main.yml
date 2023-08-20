@@ -1,0 +1,36 @@
+# tasks file for vagrant
+
+- name: Create users
+  user:
+    name: "{{ item.name }}"
+      # ssh_key_file: .ssh/my_vagrant_key.pub
+    state: present
+
+  loop: "{{ user_list }}"
+- name: Create home directory and .ssh directory
+  file:
+        path: "/home/{{ item.name }}"
+        state: directory
+        mode: '0700'
+  loop: "{{ user_list }}"
+- name: Create authorized_keys file
+  authorized_key:
+        user: "{{ item.name }}"
+        state: present
+        key: "{{ lookup('file', item.key ) }}"
+        exclusive: yes
+  loop: "{{ user_list }}"
+- name: Set permissions for .ssh directory
+  file:
+        path: "/home/{{ item.name }}/.ssh"
+        state: directory
+        mode: '0700'
+  loop: "{{ user_list }}"
+
+- name: Set permissions for authorized_keys file
+  file:
+        path: "/home/{{ item.name }}/.ssh/authorized_keys"
+        state: file
+        mode: '0600'
+  loop: "{{ user_list }}"
+

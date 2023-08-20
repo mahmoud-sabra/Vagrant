@@ -1,0 +1,15 @@
+---
+# handlers file for Lempstack
+
+
+- name: Restart services
+  service:
+    name: "{{ item }}"
+    state: restarted
+  loop:
+    - nginx
+    - mysql
+    - php-fpm
+
+
+

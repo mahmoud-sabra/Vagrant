@@ -1,0 +1,8 @@
+---
+- name: Create Lempstack
+  hosts: all
+  become: yes
+ 
+  roles:
+
+    - Lempstack

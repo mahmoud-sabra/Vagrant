@@ -1,0 +1,9 @@
+---
+  # vars file for vagrant
+user_list:
+      - name: sabra
+        key: files/my_vagrant_key.pub
+      - name: islam
+        key: files/my_vagrant_key.pub
+
+

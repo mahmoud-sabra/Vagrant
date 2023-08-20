@@ -1,0 +1,9 @@
+---
+- name: Add Users
+  hosts: all
+    #  remote_user: vagrant
+  become: true
+  roles:
+    - users
+  vars_files: users/vars/main.yml  
+

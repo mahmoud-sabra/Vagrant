@@ -1,0 +1,13 @@
+---
+# handlers file for Lampstack
+
+- name: restart services
+  service:
+       name: "{{ item }}"
+       state: restarted
+  loop:   
+       - apache2
+       - mysql
+       - php-fpm 
+
+

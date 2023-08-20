@@ -1,0 +1,19 @@
+---
+# tasks file for Lempstack
+
+- name: Update package cache
+  apt:
+    update_cache: yes
+
+- name: Install packages for LEMP stack
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - nginx
+    - mysql-server
+    - php-fpm
+    - php-mysql
+  notify: restart services
+
+

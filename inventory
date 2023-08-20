@@ -1,0 +1,13 @@
+[users]
+
+vagrant ansible_port=2222 ansible_host=127.0.0.1 ansible_user=vagrant
+
+[lampstack]
+
+vagrant ansible_port=2222 ansible_host=127.0.0.1 ansible_user=vagrant
+
+
+[lempstack]
+
+vagrant ansible_port=2222 ansible_host=127.0.0.1 ansible_user=vagrant
+

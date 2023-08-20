@@ -1,0 +1,8 @@
+---
+- name: Create Lampstack
+  hosts: all
+  become: yes
+ 
+  roles:
+
+    - Lampstack
