@@ -19,3 +19,54 @@ mkdir Vagrant
 ```
 git clone https://github.com/mahmoud-sabra/Vagrant.git
 ```
+### 3. Generate SSH Key Pair: If you want SSH key authentication, generate a key pair on your local machine:
+```
+ssh-keygen 
+```
+### 4.Enter file in which to save the key:
+```
+/home/username/Vagrant/users/files
+```
+
+### 5. Start the virtual machine by running:
+
+```
+vagrant up
+```
+----
+## Provisioning
+**We Have 3 roles**
+
+1. users
+2. Lempstack
+3. Lampstack
+
+### Provision with users
+> add users to vagrant machine & make sure their home directory created and .ssh directory and inside it authorized_keys file are there
+> and their permissions 0700 > .ssh && 0600 > .ssh/authorized_keys
+
+```
+ansible-playbook -i inventory users.yml
+```
+### Provision with Lempstack
+> Updates and upgrades the system && Install MySQL, PHP, nginx
+
+```
+ansible-playbook -i inventory lempstack.yml
+```
+### Provision with Lampstack
+> Updates and upgrades the system && Install MySQL, PHP, apache
+
+```
+ansible-playbook -i inventory lampstack.yml
+```
+## Clean Up
+
+Halt and remove the VM:
+
+```
+vagrant halt
+```
+```
+vagrant destroy
+```
